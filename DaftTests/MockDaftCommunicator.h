@@ -12,5 +12,6 @@
 @interface MockDaftCommunicator : DaftCommunicator
 
 -(BOOL)wasAskedToFetchProperties;
+-(NSURL *)fetchURL;
 
 @end

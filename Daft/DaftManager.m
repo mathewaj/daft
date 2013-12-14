@@ -7,7 +7,6 @@
 //
 
 #import "DaftManager.h"
-#import "DaftCommunicator.h"
 #import "PropertyBuilder.h"
 #import "ErrorCodes.h"
 
@@ -33,13 +32,13 @@
         userInfo = [NSDictionary dictionaryWithObject:error forKey:NSUnderlyingErrorKey];
     }
     
-    NSError *managerError = [NSError errorWithDomain:DaftManagerErrorDomain code:DaftManagerErrorCodeSearchFailed userInfo:userInfo];
+    NSError *managerError = [NSError errorWithDomain:DaftManagerErrorDomain code:DaftManagerErrorSearchFailed userInfo:userInfo];
     
-    [self.delegate getFailedWithError:managerError];
+    [self.delegate getPropertiesFailedWithError:managerError];
     
 }
 
-#pragma mark - DaftCommunicator
+#pragma mark - DaftManager
 
 -(void)getProperties{
     
@@ -47,13 +46,13 @@
     
 }
 
--(void)fetchFailedWithError:(NSError *)communicatorError{
+-(void)fetchPropertiesFailedWithError:(NSError *)communicatorError{
     
     [self informDelegateOfError:communicatorError];
     
 }
 
--(void)fetchSucceededWithJSON:(NSString *)JSON{
+-(void)fetchPropertiesSucceededWithJSON:(NSString *)JSON{
     
     NSError *propertyBuilderError = nil;
     NSArray *properties = [self.propertyBuilder propertiesFromJSON:JSON error:&propertyBuilderError];
@@ -64,9 +63,17 @@
         
     } else {
         
-        [self.delegate getSucceededWithProperties:properties];
+        [self.delegate getPropertiesSucceededWithProperties:properties];
     }
     
 }
+
+#pragma mark - DaftCommunicatorDelegate
+
+-(void)fetchFailedWithError:(NSError *)error{
+    
+    [self informDelegateOfError:error];
+}
+
 
 @end

@@ -27,6 +27,9 @@
 		E77B9A3C1858EAD400A26EA5 /* DaftManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E77B9A3B1858EAD400A26EA5 /* DaftManager.m */; };
 		E77B9A3D1858EAD400A26EA5 /* DaftManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E77B9A3B1858EAD400A26EA5 /* DaftManager.m */; };
 		E77B9A4118591BBB00A26EA5 /* MockDaftManagerDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E77B9A4018591BBB00A26EA5 /* MockDaftManagerDelegate.m */; };
+		E7F0B53A185BAE2A003BE308 /* DaftCommunicatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0B539185BAE2A003BE308 /* DaftCommunicatorTests.m */; };
+		E7F0B53D185BAF84003BE308 /* MockDaftManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0B53C185BAF84003BE308 /* MockDaftManager.m */; };
+		E7F0B546185BD0DE003BE308 /* StubURLResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F0B545185BD0DE003BE308 /* StubURLResponse.m */; };
 		E7FE807F18591E3F00C00015 /* DaftCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FE807E18591E3F00C00015 /* DaftCommunicator.m */; };
 		E7FE808018591E3F00C00015 /* DaftCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FE807E18591E3F00C00015 /* DaftCommunicator.m */; };
 		E7FE808418591E8700C00015 /* MockDaftCommunicator.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FE808218591E8700C00015 /* MockDaftCommunicator.m */; };
@@ -76,6 +79,11 @@
 		E77B9A3B1858EAD400A26EA5 /* DaftManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaftManager.m; sourceTree = "<group>"; };
 		E77B9A3F18591BBB00A26EA5 /* MockDaftManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockDaftManagerDelegate.h; sourceTree = "<group>"; };
 		E77B9A4018591BBB00A26EA5 /* MockDaftManagerDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockDaftManagerDelegate.m; sourceTree = "<group>"; };
+		E7F0B539185BAE2A003BE308 /* DaftCommunicatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaftCommunicatorTests.m; sourceTree = "<group>"; };
+		E7F0B53B185BAF84003BE308 /* MockDaftManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockDaftManager.h; sourceTree = "<group>"; };
+		E7F0B53C185BAF84003BE308 /* MockDaftManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MockDaftManager.m; sourceTree = "<group>"; };
+		E7F0B544185BD0DE003BE308 /* StubURLResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StubURLResponse.h; sourceTree = "<group>"; };
+		E7F0B545185BD0DE003BE308 /* StubURLResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StubURLResponse.m; sourceTree = "<group>"; };
 		E7FE807D18591E3F00C00015 /* DaftCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DaftCommunicator.h; sourceTree = "<group>"; };
 		E7FE807E18591E3F00C00015 /* DaftCommunicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DaftCommunicator.m; sourceTree = "<group>"; };
 		E7FE808118591E8700C00015 /* MockDaftCommunicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MockDaftCommunicator.h; sourceTree = "<group>"; };
@@ -179,6 +187,7 @@
 				E77B9A301858E3F800A26EA5 /* PropertyTests.m */,
 				E77B9A371858E9E100A26EA5 /* DaftManagerTests.m */,
 				E7FE8098185A54B600C00015 /* PropertyBuilderTests.m */,
+				E7F0B539185BAE2A003BE308 /* DaftCommunicatorTests.m */,
 				E77B9A211858E16200A26EA5 /* Supporting Files */,
 			);
 			path = DaftTests;
@@ -220,10 +229,14 @@
 			children = (
 				E77B9A3F18591BBB00A26EA5 /* MockDaftManagerDelegate.h */,
 				E77B9A4018591BBB00A26EA5 /* MockDaftManagerDelegate.m */,
+				E7F0B53B185BAF84003BE308 /* MockDaftManager.h */,
+				E7F0B53C185BAF84003BE308 /* MockDaftManager.m */,
 				E7FE808118591E8700C00015 /* MockDaftCommunicator.h */,
 				E7FE808218591E8700C00015 /* MockDaftCommunicator.m */,
 				E7FE8094185A42E400C00015 /* MockPropertyBuilder.h */,
 				E7FE8095185A42E400C00015 /* MockPropertyBuilder.m */,
+				E7F0B544185BD0DE003BE308 /* StubURLResponse.h */,
+				E7F0B545185BD0DE003BE308 /* StubURLResponse.m */,
 			);
 			name = "Mock Objects";
 			sourceTree = "<group>";
@@ -341,13 +354,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7F0B53D185BAF84003BE308 /* MockDaftManager.m in Sources */,
 				E77B9A361858E50200A26EA5 /* Property.m in Sources */,
 				E7FE808018591E3F00C00015 /* DaftCommunicator.m in Sources */,
 				E7FE8097185A42E400C00015 /* MockPropertyBuilder.m in Sources */,
 				E77B9A381858E9E100A26EA5 /* DaftManagerTests.m in Sources */,
 				E7FE8099185A54B600C00015 /* PropertyBuilderTests.m in Sources */,
+				E7F0B53A185BAE2A003BE308 /* DaftCommunicatorTests.m in Sources */,
 				E77B9A4118591BBB00A26EA5 /* MockDaftManagerDelegate.m in Sources */,
 				E77B9A3D1858EAD400A26EA5 /* DaftManager.m in Sources */,
+				E7F0B546185BD0DE003BE308 /* StubURLResponse.m in Sources */,
 				E7FE808418591E8700C00015 /* MockDaftCommunicator.m in Sources */,
 				E77B9A311858E3F800A26EA5 /* PropertyTests.m in Sources */,
 				E7FE8093185A426900C00015 /* PropertyBuilder.m in Sources */,

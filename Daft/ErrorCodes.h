@@ -11,11 +11,13 @@
 @interface ErrorCodes : NSObject
 
 extern NSString *const DaftManagerErrorDomain;
+extern NSString *const DaftCommunicatorErrorDomain;
 extern NSString *const PropertyBuilderErrorDomain;
 
 typedef NS_ENUM(NSInteger, DaftManagerErrorCode) {
-    DaftManagerErrorCodeSearchFailed
+    DaftManagerErrorSearchFailed
 };
+
 
 typedef NS_ENUM(NSInteger, PropertyBuilderErrorDomainCode) {
     PropertyBuilderErrorDomainInvalidJSONError,

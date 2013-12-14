@@ -7,29 +7,27 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "DaftCommunicator.h"
 
-@class DaftCommunicator;
 @class PropertyBuilder;
 
 @protocol DaftManagerDelegate <NSObject>
 
--(void)getFailedWithError:(NSError *)error;
--(void)getSucceededWithProperties:(NSArray *)properties;
+-(void)getPropertiesFailedWithError:(NSError *)error;
+-(void)getPropertiesSucceededWithProperties:(NSArray *)properties;
 
 @end
 
 
-@interface DaftManager : NSObject
+@interface DaftManager : NSObject <DaftCommunicatorDelegate>
 
 @property (weak, nonatomic) id <DaftManagerDelegate> delegate;
-
 @property (strong) DaftCommunicator *communicator;
 @property PropertyBuilder *propertyBuilder;
 
 -(void)getProperties;
--(void)fetchFailedWithError:(NSError *)error;
--(void)fetchSucceededWithJSON:(NSString *)JSON;
-
+-(void)fetchPropertiesFailedWithError:(NSError *)error;
+-(void)fetchPropertiesSucceededWithJSON:(NSString *)JSON;
 
 @end
 

@@ -70,7 +70,7 @@
     MockDaftManagerDelegate *delegate = [[MockDaftManagerDelegate alloc] init];
     mgr.delegate = delegate;
     
-    [mgr fetchFailedWithError:error];
+    [mgr fetchPropertiesFailedWithError:error];
     XCTAssertNotNil([delegate getError], @"Delegate should have been notified of error");
     
 }
@@ -81,7 +81,7 @@
     MockDaftManagerDelegate *delegate = [[MockDaftManagerDelegate alloc] init];
     mgr.delegate = delegate;
     
-    [mgr fetchFailedWithError:error];
+    [mgr fetchPropertiesFailedWithError:error];
     XCTAssertNotEqualObjects([delegate getError], error, @"Delegate should be not be notified at same level of abstraction");
     
 }
@@ -93,7 +93,7 @@
     MockDaftManagerDelegate *delegate = [[MockDaftManagerDelegate alloc] init];
     mgr.delegate = delegate;
     
-    [mgr fetchFailedWithError:communicatorError];
+    [mgr fetchPropertiesFailedWithError:communicatorError];
     XCTAssertEqualObjects([[[delegate getError] userInfo] objectForKey:NSUnderlyingErrorKey], communicatorError, @"Delegate should receive communicator error as underlying error");
     
 }
@@ -105,7 +105,7 @@
     MockPropertyBuilder *propertyBuilder = [[MockPropertyBuilder alloc] init];
     mgr.propertyBuilder = propertyBuilder;
     
-    [mgr fetchSucceededWithJSON:@"JSON"];
+    [mgr fetchPropertiesSucceededWithJSON:@"JSON"];
     XCTAssertEqualObjects(propertyBuilder.JSON, @"JSON", @"Daft Manager should have provided JSON to Property Builder");
     
 }
@@ -121,7 +121,7 @@
     NSError *error = [NSError errorWithDomain:@"Test Domain" code:0 userInfo:nil];
     propertyBuilder.errorToSet = error;
     
-    [mgr fetchSucceededWithJSON:@"JSON"];
+    [mgr fetchPropertiesSucceededWithJSON:@"JSON"];
     XCTAssertNotNil([delegate getError], @"Delegate should have been notified of error");
     
 }
@@ -137,7 +137,7 @@
     NSError *error = [NSError errorWithDomain:@"Test Domain" code:0 userInfo:nil];
     propertyBuilder.errorToSet = error;
     
-    [mgr fetchFailedWithError:error];
+    [mgr fetchPropertiesFailedWithError:error];
     XCTAssertNotEqualObjects([delegate getError], error, @"Delegate should be not be notified at same level of abstraction");
     
 }
@@ -153,7 +153,7 @@
     Property *property = [[Property alloc] init];
     propertyBuilder.arrayToReturn = [NSArray arrayWithObject:property];
     
-    [mgr fetchSucceededWithJSON:@"JSON"];
+    [mgr fetchPropertiesSucceededWithJSON:@"JSON"];
     XCTAssertNil([delegate getError], @"Delegate should not have been notified of error");
     
 }
@@ -169,7 +169,7 @@
     Property *property = [[Property alloc] init];
     propertyBuilder.arrayToReturn = [NSArray arrayWithObject:property];
     
-    [mgr fetchSucceededWithJSON:@"JSON"];
+    [mgr fetchPropertiesSucceededWithJSON:@"JSON"];
     XCTAssertNotNil([delegate getProperties], @"Delegate should have been provided with properties");
     
 }
@@ -184,7 +184,7 @@
     
     propertyBuilder.arrayToReturn = [NSArray array];
     
-    [mgr fetchSucceededWithJSON:@"JSON"];
+    [mgr fetchPropertiesSucceededWithJSON:@"JSON"];
     XCTAssertNotNil([delegate getProperties], @"Delegate should have been provided with properties");
 }
 

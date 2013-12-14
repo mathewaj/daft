@@ -26,4 +26,10 @@
     
 }
 
+-(NSURL *)fetchURL{
+    
+    return self.fetchURL;
+    
+}
+
 @end

@@ -15,13 +15,13 @@
     
 }
 
--(void)getFailedWithError:(NSError *)error{
+-(void)getPropertiesFailedWithError:(NSError *)error{
     
     storedError = error;
     
 }
 
--(void)getSucceededWithProperties:(NSArray *)properties{
+-(void)getPropertiesSucceededWithProperties:(NSArray *)properties{
     
     storedProperties = properties;
 }

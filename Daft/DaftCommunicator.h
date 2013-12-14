@@ -8,8 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
-@interface DaftCommunicator : NSObject
+@protocol DaftCommunicatorDelegate <NSObject>
+
+-(void)fetchFailedWithError:(NSError *)error;
+-(void)fetchSucceededWithText:(NSString *)text;
+
+@end
+
+@interface DaftCommunicator : NSObject <NSURLConnectionDataDelegate>
+
+@property (weak) id <DaftCommunicatorDelegate> delegate;
+
+@property (strong) NSURL *fetchURL;
+@property (strong) NSURLConnection *connection;
+@property (strong) NSMutableData *receivedData;
 
 -(void)fetchProperties;
+-(void)cancelAndDiscardConnection;
 
 @end

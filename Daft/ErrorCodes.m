@@ -13,5 +13,5 @@
 @end
 
 NSString *const DaftManagerErrorDomain = @"com.alanpm.DaftManagerErrorDomain";
-
+NSString *const DaftCommunicatorErrorDomain = @"com.alanpm.DaftCommunicatorErrorDomain";
 NSString *const PropertyBuilderErrorDomain = @"com.alanpm.PropertyBuilderErrorDomain";
