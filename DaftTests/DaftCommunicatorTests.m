@@ -60,7 +60,7 @@ static NSString *httpRequestTest = @"https://api.daft.com/v2/json/search_sale?pa
 
 -(void)testReceivingResponseDiscardsExistingData{
     
-    communicator.receivedData = [@"Existing Data" dataUsingEncoding:NSUTF8StringEncoding];
+    communicator.receivedData = (NSMutableData *)[@"Existing Data" dataUsingEncoding:NSUTF8StringEncoding];
     [communicator fetchProperties];
     [communicator connection:nil didReceiveResponse:nil];
     XCTAssertEqual([communicator.receivedData length], (NSUInteger)0, @"Data should have been discarded");
@@ -106,7 +106,7 @@ static NSString *httpRequestTest = @"https://api.daft.com/v2/json/search_sale?pa
     
     MockDaftManager *manager = [[MockDaftManager alloc] init];
     communicator.delegate = manager;
-    communicator.receivedData = [@"Data Success" dataUsingEncoding:NSUTF8StringEncoding];
+    communicator.receivedData = (NSMutableData *)[@"Data Success" dataUsingEncoding:NSUTF8StringEncoding];
     [communicator connectionDidFinishLoading:nil];
     XCTAssertNotNil(manager.text, @"Failure to connect should cause error");
     
@@ -116,7 +116,7 @@ static NSString *httpRequestTest = @"https://api.daft.com/v2/json/search_sale?pa
     
     MockDaftManager *manager = [[MockDaftManager alloc] init];
     communicator.delegate = manager;
-    communicator.receivedData = [@"Data Success" dataUsingEncoding:NSUTF8StringEncoding];
+    communicator.receivedData = (NSMutableData *)[@"Data Success" dataUsingEncoding:NSUTF8StringEncoding];
     
     NSData *extraData = [@" Extra" dataUsingEncoding:NSUTF8StringEncoding];
     

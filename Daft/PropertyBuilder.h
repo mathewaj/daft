@@ -7,7 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-
+/**
+ * Construct Property objects from an external representation.
+ * @note The format of the JSON is driven by the Daft API.
+ * @see Property
+ */
 @interface PropertyBuilder : NSObject
 
 -(NSArray *)propertiesFromJSON:(NSString *)JSON

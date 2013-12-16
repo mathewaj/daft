@@ -14,4 +14,7 @@
 @property NSError *error;
 @property NSString *text;
 
+-(void)getProperties;
+-(BOOL)propertiesRequested;
+
 @end

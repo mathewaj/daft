@@ -72,6 +72,7 @@ static NSString *httpRequest = @"https://api.daft.com/v2/json/search_sale?parame
         
         self.receivedData = [[NSMutableData alloc] init];
     }
+    
 }
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection{

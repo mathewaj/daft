@@ -12,6 +12,27 @@
 
 @implementation DaftManager
 
+#pragma mark - DaftManager
+
+-(id)init{
+    
+    if((self = [super init])){
+        
+        self.communicator = [[DaftCommunicator alloc] init];
+        self.communicator.delegate = self;
+        self.propertyBuilder = [[PropertyBuilder alloc] init];
+    }
+    
+    return self;
+    
+}
+
+-(void)getProperties{
+    
+    [self.communicator fetchProperties];
+    
+}
+
 #pragma mark - DaftManagerDelegate
 
 -(void)setDelegate:(id<DaftManagerDelegate>)delegate{
@@ -38,21 +59,14 @@
     
 }
 
-#pragma mark - DaftManager
+#pragma mark - DaftCommunicatorDelegate Methods
 
--(void)getProperties{
-    
-    [self.communicator fetchProperties];
-    
-}
-
--(void)fetchPropertiesFailedWithError:(NSError *)communicatorError{
+-(void)fetchFailedWithError:(NSError *)communicatorError{
     
     [self informDelegateOfError:communicatorError];
-    
 }
 
--(void)fetchPropertiesSucceededWithJSON:(NSString *)JSON{
+-(void)fetchSucceededWithText:(NSString *)JSON{
     
     NSError *propertyBuilderError = nil;
     NSArray *properties = [self.propertyBuilder propertiesFromJSON:JSON error:&propertyBuilderError];
@@ -66,13 +80,6 @@
         [self.delegate getPropertiesSucceededWithProperties:properties];
     }
     
-}
-
-#pragma mark - DaftCommunicatorDelegate
-
--(void)fetchFailedWithError:(NSError *)error{
-    
-    [self informDelegateOfError:error];
 }
 
 

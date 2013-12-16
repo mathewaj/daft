@@ -8,7 +8,11 @@
 
 #import "MockDaftManager.h"
 
-@implementation MockDaftManager
+@implementation MockDaftManager {
+    
+    BOOL propertiesRequested;
+    
+}
 
 -(void)fetchFailedWithError:(NSError *)error{
     
@@ -18,6 +22,17 @@
 -(void)fetchSucceededWithText:(NSString *)text{
     
     self.text = text;
+}
+
+-(void)getProperties{
+    
+    propertiesRequested = YES;
+    
+}
+
+-(BOOL)propertiesRequested{
+    
+    return propertiesRequested;
 }
 
 @end
